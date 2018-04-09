@@ -1,0 +1,16 @@
+extends layout
+
+block content
+  h1 Auswahl
+  button.dozent(type='button') Dozent
+  br
+  br
+  button.student(type='button') Student
+  script.
+    //var code = #{code};
+    $('.dozent').click(function(){
+      window.location.href = window.location.pathname + '/lecturer';
+    });
+    $('.student').click(function(){
+      window.location.href = window.location.pathname + '/student';
+    });

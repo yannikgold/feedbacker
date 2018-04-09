@@ -1,0 +1,53 @@
+extends layout
+
+block content
+  h1 Student
+  button.state1(type='button') Nicht interessiert
+  br
+  br
+  button.state2(type='button') Ich komme nicht hinterher
+  br
+  br
+  button.state3(type='button') Ich langweile mich
+  br
+  br
+  button.state4(type='button') Ich verstehe das nicht
+  br
+  br
+  button.state5(type='button') Alles bestens
+  script.
+    $('button').click(function(){
+      console.log('className: ', this.className);
+      var pathname = window.location.pathname;
+      var selectedState = this.className;
+      new Fingerprint2().get(function(result, components) {
+        console.log('userID: ', result) // a hash, representing your device fingerprint
+        var state = {
+          state: selectedState,
+          browserID: result
+        }
+        ajaxPost(pathname + '/addState', state, function(err, data){
+          if(!err){
+            console.log('State posted.');
+          }
+        });
+      });
+    });
+
+
+
+    function ajaxPost(url, data, callback) {
+      $.ajax({
+          type: "POST",
+          url: url,
+          contentType: "application/json; charset = utf-8",
+          datatype: "json",
+          data: JSON.stringify(data),
+          success: (data) => {
+              callback(null, data)
+          },
+          error: (err) => {
+              callback(err, null)
+          }
+      });
+    }
