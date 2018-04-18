@@ -6,17 +6,18 @@ block content
   button.enterGroup(type='button') Beitreten
   br
   br
-  button.createGroup(type='button') Neue Gruppe erstellen!
+  button.createGroup(type='button') Zufälligen Code generieren!
   script.
     $('.createGroup').click(function(){
       console.log('groupID: ', generateGroupID());
       //route('/overview');
-      window.location.href = ''+ generateGroupID();
+      //window.location.href = ''+ generateGroupID();
+      $('input').val(generateGroupID());
     });
 
     $('.enterGroup').click(function(){
       console.log('groupID: ', $('input').val());
-      window.location.href = $('input').val();      
+      window.location.href = $('input').val();
     });
 
     $('input').keyup(function(e){

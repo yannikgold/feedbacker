@@ -34,7 +34,21 @@ router.post('/:group/student/addState', function(req, res, next){
   console.log('adding State');
   console.log('reqbody: ', req.body);
   states.addState(req.params.group, req.body, function(data){
+    res.send('success');
+  });
+});
 
+router.get('/:group/lecturer/getData', function(req, res, next){
+  states.getStates(req.params.group, function(data){
+    res.send(data);
+  });
+});
+
+router.post('/:group/student/getState', function(req, res, next){
+  console.log('getting State');
+  console.log('reqbody: ', req.body);
+  states.getState(req.params.group, req.body.browserID, function(data){
+    res.send(data);
   });
 });
 

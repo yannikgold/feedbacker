@@ -1,25 +1,41 @@
 extends layout
 
 block content
-  h1 Student
-  button.state1(type='button') Nicht interessiert
-  br
-  br
-  button.state2(type='button') Ich komme nicht hinterher
-  br
-  br
-  button.state3(type='button') Ich langweile mich
-  br
-  br
-  button.state4(type='button') Ich verstehe das nicht
-  br
-  br
-  button.state5(type='button') Alles bestens
+  h1 Wähle deinen Status:
+  .buttons(style='display: none;')
+    button(type='button', value='1') Nicht interessiert
+    br
+    br
+    button(type='button', value='2') Ich komme nicht hinterher
+    br
+    br
+    button(type='button', value='3') Ich langweile mich
+    br
+    br
+    button(type='button', value='4') Ich verstehe das nicht
+    br
+    br
+    button(type='button', value='5') Alles bestens
+
   script.
+    new Fingerprint2().get(function(result, components) {
+      var object = {
+        browserID: result
+      }
+      ajaxPost(window.location.pathname + '/getState', object, function(err, data){
+        if(!err){
+          console.log('Current state is: ', data);
+          $('button[value='+ data +']').css("border-color","lightblue");
+          $('.buttons').show();
+        }
+      });
+    });
+    
     $('button').click(function(){
-      console.log('className: ', this.className);
+      $('button').css("border-color","");
+      $(this).css("border-color","lightblue");
       var pathname = window.location.pathname;
-      var selectedState = this.className;
+      var selectedState = this.value;
       new Fingerprint2().get(function(result, components) {
         console.log('userID: ', result) // a hash, representing your device fingerprint
         var state = {
@@ -33,8 +49,6 @@ block content
         });
       });
     });
-
-
 
     function ajaxPost(url, data, callback) {
       $.ajax({

@@ -1,11 +1,12 @@
 extends layout
 
 block content
-  h1 Auswahl
-  button.dozent(type='button') Dozent
-  br
-  br
+  h1 Bist du Student oder Dozent?
   button.student(type='button') Student
+  br
+  br
+  button.dozent(type='button') Dozent
+
   script.
     //var code = #{code};
     $('.dozent').click(function(){
