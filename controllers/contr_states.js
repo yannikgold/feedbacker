@@ -34,7 +34,7 @@ var controller = {
     getStates: function(groupID, callback){
         models.findOne('groups', {code: groupID}, {_id: 1}, function(err, result){
             if(result){
-                models.findAll('states', {group_id: result._id}, {}, function(err, results){
+                models.findAll('states', {group_id: result._id, time: {$gte: new Date(Date.now() - 1000*300)} }, {}, function(err, results){
                     if(!err){
                         var voteArray = [0, 0, 0, 0, 0];
                         results.forEach(function(vote){
