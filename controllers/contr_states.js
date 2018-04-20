@@ -20,7 +20,7 @@ var controller = {
                             }
                         });
                     } else {
-                        models.updateOne('states', {_id: result._id}, {state: stateData.state, time: new Date()}, function(err, result){
+                        models.updateOne('states', {_id: result._id}, {state: parseInt(stateData.state), time: new Date()}, function(err, result){
                             console.log('updated');
                             if(!err){
                                 callback();
@@ -52,9 +52,13 @@ var controller = {
                 console.log('group MongoID:', result);
 
                 models.findOne('states', {browser_id: browserID, group_id: result._id}, {}, function(err, result){
-                    console.log('result: ', result.state);
+                    
                     if(result){
-                        callback(result.state);
+                        console.log('result: ', result.state);
+                        var obj = {
+                            state: result.state
+                        }
+                        callback(obj);
                     } else {
                         callback();
                     }

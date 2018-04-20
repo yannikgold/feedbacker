@@ -23,9 +23,11 @@ block content
         browserID: result
       }
       ajaxPost(window.location.pathname + '/getState', object, function(err, data){
-        if(!err){
-          console.log('Current state is: ', data);
-          $('button[value='+ data +']').css("border-color","lightblue");
+        if(data){
+          console.log('Current state is: ', data.state);
+          $('button[value='+ data.state +']').css("border-color","lightblue");
+          $('.buttons').show();
+        } else {
           $('.buttons').show();
         }
       });
