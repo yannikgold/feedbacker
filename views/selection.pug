@@ -2,10 +2,8 @@ extends layout
 
 block content
   h1 Bist du Student oder Dozent?
-  button.student(type='button') Student
-  br
-  br
-  button.dozent(type='button') Dozent
+  button.student(type='button', class='selectionButton' style='background-color: #ff6633;') Student
+  button.dozent(type='button', class='selectionButton' style='background-color: #66ccff;') Dozent
 
   script.
     //var code = #{code};

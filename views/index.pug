@@ -2,11 +2,10 @@ extends layout
 
 block content
   h1 HCI Prototyp
-  input(type='text', name='groupID', placeholder='Code eingeben...')
-  button.enterGroup(type='button') Beitreten
-  br
-  br
-  button.createGroup(type='button') Zufälligen Code generieren!
+  input(type='text', name='groupID', placeholder='Code eingeben...', class='controls')
+  button.enterGroup(type='button', class='nonImageButton controls') Beitreten
+  div(class='clear')
+  button.createGroup(type='button', class='nonImageButton controls') Zufälligen Code generieren!
   script.
     $('.createGroup').click(function(){
       console.log('groupID: ', generateGroupID());

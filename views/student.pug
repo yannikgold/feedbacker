@@ -2,22 +2,18 @@ extends layout
 
 block content
   h1 Wähle deinen Status:
-  .buttons(style='display: none;')
-    button(type='button', value='1') Nicht interessiert
-    br
-    br
-    button(type='button', value='2') Ich komme nicht hinterher
-    br
-    br
-    button(type='button', value='3') Ich langweile mich
-    br
-    br
-    button(type='button', value='4') Ich verstehe das nicht
-    br
-    br
-    button(type='button', value='5') Alles bestens
+  .buttons
+    button(type='button', value='1', class='imageButton') 
+      i(src='/img/mind.png', class='buttonImg') 
+      Nicht interessiert
+      
+    button(type='button', value='2', class='controls imageButton') Ich komme nicht hinterher
+    button(type='button', value='3', class='controls imageButton') Ich langweile mich
+    button(type='button', value='4', class='controls imageButton') Ich verstehe das nicht
+    button(type='button', value='5', class='controls imageButton') Alles bestens
 
   script.
+    /*
     new Fingerprint2().get(function(result, components) {
       var object = {
         browserID: result
@@ -30,7 +26,7 @@ block content
         }
       });
     });
-    
+    */
     $('button').click(function(){
       $('button').css("border-color","");
       $(this).css("border-color","lightblue");
