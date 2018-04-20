@@ -4,16 +4,27 @@ block content
   h1 Wähle deinen Status:
   .buttons
     button(type='button', value='1', class='imageButton') 
-      i(src='/img/mind.png', class='buttonImg') 
-      Nicht interessiert
-      
-    button(type='button', value='2', class='controls imageButton') Ich komme nicht hinterher
-    button(type='button', value='3', class='controls imageButton') Ich langweile mich
-    button(type='button', value='4', class='controls imageButton') Ich verstehe das nicht
-    button(type='button', value='5', class='controls imageButton') Alles bestens
+      img(src="/img/forbidden.png", alt="Nicht interessiert", class="buttonImg")
+      div(class="buttonDiv") Nicht interessiert
+
+    button(type='button', value='2', class='imageButton') 
+      img(src="/img/fast-forward.png", alt="Ich komme nicht hinterher", class="buttonImg")
+      div(class="buttonDiv") Ich komme nicht hinterher
+
+    button(type='button', value='3', class='imageButton') 
+      img(src="/img/hourglass.png", alt="Ich langweile mich", class="buttonImg")
+      div(class="buttonDiv") Ich langweile mich
+
+    button(type='button', value='4', class='imageButton') 
+      img(src="/img/info.png", alt="Ich verstehe das nicht", class="buttonImg")
+      div(class="buttonDiv") Ich verstehe das nicht
+
+    button(type='button', value='5', class='imageButton') 
+      img(src="/img/like.png", alt="Alles bestens", class="buttonImg")
+      div(class="buttonDiv") Alles bestens
 
   script.
-    /*
+    /*<div>Icons made by <a href="https://www.flaticon.com/authors/smashicons" title="Smashicons">Smashicons</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a></div>
     new Fingerprint2().get(function(result, components) {
       var object = {
         browserID: result

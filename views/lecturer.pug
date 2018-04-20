@@ -1,18 +1,18 @@
 extends layout
 
 block content
-  h1 Umfrageergebnisse
-  h3 Anzahl der Stimmen:
-    b  ...
-    button(type='button', onclick='toggleChart();', style='float: right;') Diagramm wechseln
-  canvas#auditResults
-  script.
-    var ctx = document.getElementById("auditResults").getContext('2d');
+    h1 Umfrageergebnisse
+    h3 Anzahl der Stimmen:
+        b  ...
+        button(type='button', onclick='toggleChart();', style='float: right;') Diagramm wechseln
+    canvas#auditResults
+    script.
+        var ctx = document.getElementById("auditResults").getContext('2d');
 
-    var chartType = 'pie';
+        var chartType = 'pie';
 
-    var dataObject = {
-            labels: ["Nicht interessiert", "Ich komme nicht hinterher", "Ich langweile mich", "Ich verstehe das nicht", "Alles bestens"],
+        var dataObject = {
+            labels: ["\e800", "Ich komme nicht hinterher", "Ich langweile mich", "Ich verstehe das nicht", "Alles bestens"],
             datasets: [{
                 label: 'Anzahl der Stimmen',
                 data: [0, 0, 0, 0, 0],
@@ -32,32 +32,23 @@ block content
                 ],
                 borderWidth: 1
             }]
-    }
-
-    var chart = new Chart(ctx, {
-        type: chartType,
-        data: dataObject,
-        options: {
-            scales: {
-                yAxes: [{
-                    ticks: {
-                        beginAtZero:true
-                    }
-                }]
-            }
         }
-    });
 
-    $.get(window.location.pathname + '/getData', function(data) {
-        dataObject.datasets[0].data = data;
-        chart.config.data = dataObject;
-        var sum = data.reduce((a, b) => a + b, 0);
-        $('h3 b').text(' ' + sum);
-        chart.update(0);
-    });
+        var chart = new Chart(ctx, {
+            type: chartType,
+            data: dataObject,
+            options: {
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero:true,
+                            fontFamily: 'fontello'
+                        }
+                    }]
+                }
+            }
+        });
 
-    setInterval(function(){
-        console.log('Updating chart!');
         $.get(window.location.pathname + '/getData', function(data) {
             dataObject.datasets[0].data = data;
             chart.config.data = dataObject;
@@ -65,23 +56,33 @@ block content
             $('h3 b').text(' ' + sum);
             chart.update(0);
         });
-    }, 1000);
 
-    function toggleChart() {
-        this.chart.destroy();
-        this.chartType = (this.chartType == 'bar') ? 'pie' : 'bar';
+        setInterval(function(){
+            console.log('Updating chart!');
+            $.get(window.location.pathname + '/getData', function(data) {
+                dataObject.datasets[0].data = data;
+                chart.config.data = dataObject;
+                var sum = data.reduce((a, b) => a + b, 0);
+                $('h3 b').text(' ' + sum);
+                chart.update(0);
+            });
+        }, 1000);
 
-        this.chart = new Chart(ctx, {
-            type: chartType,
-            data: dataObject,
-            options: {
-                scales: {
-                    yAxes: [{
-                        ticks: {
-                            beginAtZero:true
-                        }
-                    }]
+        function toggleChart() {
+            this.chart.destroy();
+            this.chartType = (this.chartType == 'bar') ? 'pie' : 'bar';
+
+            this.chart = new Chart(ctx, {
+                type: chartType,
+                data: dataObject,
+                options: {
+                    scales: {
+                        yAxes: [{
+                            ticks: {
+                                beginAtZero:true
+                            }
+                        }]
+                    }
                 }
-            }
-        });
-    }
+            });
+        }

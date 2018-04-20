@@ -1,3 +1,4 @@
+
 body {
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
@@ -27,24 +28,36 @@ a {
 }
 
 .nonImageButton{
-  background-color: #0099cc;
+  background-color: #99cccc;
   color: white;
   cursor: pointer;
 }
 
 .imageButton{
-  background-color: DodgerBlue;
+  background-color: #99cccc;
   border: none;
   color: white;
-  padding: 12px 16px;
-  font-size: 16px;
+  font-size: 24px;
   cursor: pointer;
+  width: 100%;
+  min-width: 380px;
+  max-width: 500px;
+  padding: 10px;
+  margin: 0 15px 15px 0;
 }
 
 .buttonImg{
   width: 50px;
+  height: 50px;
   float: left;
-  
+}
+
+.buttonDiv{
+  width: 78%;
+  height: 24px;
+  float: right;
+  text-align: left;
+  margin: 14px 0;
 }
 
 .selectionButton{
