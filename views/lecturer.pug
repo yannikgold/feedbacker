@@ -12,7 +12,7 @@ block content
         var chartType = 'pie';
 
         var dataObject = {
-            labels: ["\e800", "Ich komme nicht hinterher", "Ich langweile mich", "Ich verstehe das nicht", "Alles bestens"],
+            labels: ['\ue800', "Ich komme nicht hinterher", "Ich langweile mich", "Ich verstehe das nicht", "Alles bestens"],
             datasets: [{
                 label: 'Anzahl der Stimmen',
                 data: [0, 0, 0, 0, 0],
@@ -41,7 +41,7 @@ block content
                 scales: {
                     yAxes: [{
                         ticks: {
-                            beginAtZero:true,
+                            beginAtZero: true,
                             fontFamily: 'fontello'
                         }
                     }]
@@ -49,6 +49,7 @@ block content
             }
         });
 
+        Chart.defaults.global.defaultFontFamily = "fontello";
         $.get(window.location.pathname + '/getData', function(data) {
             dataObject.datasets[0].data = data;
             chart.config.data = dataObject;
@@ -79,7 +80,8 @@ block content
                     scales: {
                         yAxes: [{
                             ticks: {
-                                beginAtZero:true
+                                beginAtZero: true,
+                                fontFamily: 'fontello'
                             }
                         }]
                     }
