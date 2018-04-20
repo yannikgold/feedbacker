@@ -20,7 +20,7 @@ var controller = {
                             }
                         });
                     } else {
-                        models.updateOne('states', {_id: result._id}, {state: stateData.state, time: new Date()}, function(err, result){
+                        models.updateOne('states', {_id: result._id}, {state: parseInt(stateData.state), time: new Date()}, function(err, result){
                             console.log('updated');
                             if(!err){
                                 callback();
@@ -34,7 +34,7 @@ var controller = {
     getStates: function(groupID, callback){
         models.findOne('groups', {code: groupID}, {_id: 1}, function(err, result){
             if(result){
-                models.findAll('states', {group_id: result._id}, {}, function(err, results){
+                models.findAll('states', {group_id: result._id, time: {$gte: new Date(Date.now() - 1000*300)} }, {}, function(err, results){
                     if(!err){
                         var voteArray = [0, 0, 0, 0, 0];
                         results.forEach(function(vote){
@@ -52,9 +52,13 @@ var controller = {
                 console.log('group MongoID:', result);
 
                 models.findOne('states', {browser_id: browserID, group_id: result._id}, {}, function(err, result){
-                    console.log('result: ', result.state);
+                    
                     if(result){
-                        callback(result.state);
+                        console.log('result: ', result.state);
+                        var obj = {
+                            state: result.state
+                        }
+                        callback(obj);
                     } else {
                         callback();
                     }
