@@ -1,2 +1,6 @@
 
-.icon-fast-forward:before { content: '\e800'; } /* '' */
+.icon-stop:before { content: '\e800'; } /* '' */
+.icon-hourglass:before { content: '\e801'; } /* '' */
+.icon-help-circled:before { content: '\e802'; } /* '' */
+.icon-like:before { content: '\e803'; } /* '' */
+.icon-fast-forward:before { content: '\e805'; } /* '' */
