@@ -12,7 +12,11 @@ block content
         var chartType = 'pie';
 
         var dataObject = {
+<<<<<<< HEAD
             labels: ['\ue800 Nicht interessiert', "\ue805 Ich komme nicht hinterher", "\ue801 Ich langweile mich", "\ue802 Ich verstehe das nicht", "\ue803 Alles bestens"],
+=======
+            labels: ['\ue805', '\ue800', '\ue801', '\ue802', '\ue803'],
+>>>>>>> 4da015905a3e57e22274caa1c9065698e055166b
             datasets: [{
                 label: 'Anzahl der Stimmen',
                 data: [0, 0, 0, 0, 0],
@@ -57,7 +61,7 @@ block content
             $('h3 b').text(' ' + sum);
             chart.update(0);
         });
-
+    
         setInterval(function(){
             console.log('Updating chart!');
             $.get(window.location.pathname + '/getData', function(data) {
