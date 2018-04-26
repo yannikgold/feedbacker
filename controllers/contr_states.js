@@ -38,7 +38,8 @@ var controller = {
                     if(!err){
                         var voteArray = [0, 0, 0, 0, 0];
                         results.forEach(function(vote){
-                            voteArray[parseInt(vote.state) - 1] = voteArray[parseInt(vote.state) - 1] + 1;
+                            $dateDif = ((Date.now() - vote.time.getTime()) / 1000 / 60);
+                            voteArray[parseInt(vote.state) - 1] = voteArray[parseInt(vote.state) - 1] + (1 - (parseInt($dateDif) / 5));
                         });
                         callback(voteArray);
                     }

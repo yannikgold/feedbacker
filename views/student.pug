@@ -31,17 +31,18 @@ block content
       ajaxPost(window.location.pathname + '/getState', object, function(err, data){
         if(data){
           console.log('Current state is: ', data.state);
-          $('button[value='+ data.state +']').css("border-color","lightblue");
+          $('button[value='+ data.state +']').addClass("selectedButton");
           $('.buttons').show();
         } else {
           $('.buttons').show();
+          $('button[value='+ data.state +']').removeClass("selectedButton");
         }
       });
     });
     
     $('button').click(function(){
-      $('button').css("border-color","");
-      $(this).css("border-color","lightblue");
+      $('button').removeClass("selectedButton");
+      $(this).addClass("selectedButton");
       var pathname = window.location.pathname;
       var selectedState = this.value;
       new Fingerprint2().get(function(result, components) {

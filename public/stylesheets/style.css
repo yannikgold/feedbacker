@@ -33,6 +33,12 @@ a {
   cursor: pointer;
 }
 
+.selectedButton{
+  background-color: white!important;
+  color: #99cccc !important;
+  border: 1px solid #99cccc !important;
+}
+
 .imageButton{
   background-color: #99cccc;
   border: none;
