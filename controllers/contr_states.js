@@ -1,27 +1,27 @@
 var models = require('../models/mdl_generics');
 
+var decaySeconds = 10;
+
 var controller = {
     addState: function(groupID, stateData, callback){
         models.findOne('groups', {code: groupID}, {_id: 1}, function(err, result){
             if(result){
-                console.log('group MongoID:', result);
                 var state = {
                     group_id: result._id,
                     state: parseInt(stateData.state),
                     browser_id: stateData.browserID,
-                    time: new Date()
+                    time: new Date(),
+                    counter: 0
                 }
                 models.findOne('states', {browser_id: stateData.browserID, group_id: result._id}, {}, function(err, result){
                     if(!result){
                         models.addNew('states', state, function(err, result){
-                            console.log('added New');
                             if(!err){
                                 callback(); 
                             }
                         });
                     } else {
-                        models.updateOne('states', {_id: result._id}, {state: parseInt(stateData.state), time: new Date()}, function(err, result){
-                            console.log('updated');
+                        models.updateOne('states', {_id: result._id}, {state: parseInt(stateData.state), time: new Date(), counter: result.counter + 1}, function(err, result){
                             if(!err){
                                 callback();
                             }
@@ -34,12 +34,19 @@ var controller = {
     getStates: function(groupID, callback){
         models.findOne('groups', {code: groupID}, {_id: 1}, function(err, result){
             if(result){
-                models.findAll('states', {group_id: result._id, time: {$gte: new Date(Date.now() - 1000*300)} }, {}, function(err, results){
+                models.findAll('states', {group_id: result._id, time: {$gte: new Date(Date.now() - 1000*decaySeconds)} }, {}, function(err, results){
                     if(!err){
                         var voteArray = [0, 0, 0, 0, 0];
                         results.forEach(function(vote){
-                            $dateDif = ((Date.now() - vote.time.getTime()) / 1000 / 60);
-                            voteArray[parseInt(vote.state) - 1] = voteArray[parseInt(vote.state) - 1] + (1 - (parseInt($dateDif) / 5));
+                            //Berechnung der Gewichtung des Votes Anhand der decayTime.
+                            var startDate = new Date(Date.now());
+                            var endDate   = new Date(vote.time);
+                            var seconds = (startDate.getTime() - endDate.getTime()) / 1000;
+
+                            var voteWeight = parseFloat(1 - (seconds/decaySeconds)).toFixed(2);
+                            
+                            //Zusammenzählen der einzelnen Votes in ein gesammeltes Array.
+                            voteArray[parseInt(vote.state) - 1] = voteArray[parseInt(vote.state) - 1] + voteWeight;
                         });
                         callback(voteArray);
                     }
@@ -50,14 +57,19 @@ var controller = {
     getState: function(groupID, browserID, callback){
         models.findOne('groups', {code: groupID}, {_id: 1}, function(err, result){
             if(result){
-                console.log('group MongoID:', result);
-
                 models.findOne('states', {browser_id: browserID, group_id: result._id}, {}, function(err, result){
                     
                     if(result){
-                        console.log('result: ', result.state);
+                        //Berechnung der Gewichtung des Votes Anhand der decayTime.
+                        var startDate = new Date(Date.now());
+                        var endDate   = new Date(result.time);
+                        var seconds = (startDate.getTime() - endDate.getTime()) / 1000;
+
+                        var voteWeight = parseFloat(1 - (seconds/decaySeconds)).toFixed(2);
+
                         var obj = {
-                            state: result.state
+                            state: result.state,
+                            weight: voteWeight
                         }
                         callback(obj);
                     } else {
