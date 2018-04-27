@@ -23,6 +23,10 @@ block content
       img(src="/img/like.png", alt="Alles bestens", class="buttonImg")
       div(class="buttonDiv") Alles bestens
 
+    button(type='button', value='0', class='imageButton') 
+      //img(src="/img/like.png", alt="Alles bestens", class="buttonImg")
+      div(class="buttonDiv") Keine Meinung
+
   script.
     new Fingerprint2().get(function(result, components) {
       var object = {
