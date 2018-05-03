@@ -43,7 +43,7 @@ var controller = {
                             var endDate   = new Date(vote.time);
                             var seconds = (startDate.getTime() - endDate.getTime()) / 1000;
 
-                            var voteWeight = parseFloat(1 - (seconds/decaySeconds)).toFixed(2);
+                            var voteWeight = parseFloat(1 - (seconds/decaySeconds));
                             
                             //Zusammenzählen der einzelnen Votes in ein gesammeltes Array.
                             voteArray[parseInt(vote.state) - 1] = voteArray[parseInt(vote.state) - 1] + voteWeight;
