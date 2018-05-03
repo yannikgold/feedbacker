@@ -53,8 +53,8 @@ block content
         $.get(window.location.pathname + '/getData', function(data) {
             dataObject.datasets[0].data = data;
             chart.config.data = dataObject;
-            var sum = data.reduce((a, b) => a + b, 0);
-            $('h3 b').text(' ' + parseFloat(sum).toFixed(2));
+            var sum = data.reduce((a, b) => Number(a) + Number(b), 0);
+            $('h3 b').text(' ' + Number(sum).toFixed(2));
             chart.update(0);
         });
     
@@ -64,8 +64,8 @@ block content
                 console.log(data);
                 dataObject.datasets[0].data = data;
                 chart.config.data = dataObject;
-                var sum = data.reduce((a, b) => a + b, 0);
-                $('h3 b').text(' ' + parseFloat(sum).toFixed(2));
+                var sum = data.reduce((a, b) => Number(a) + Number(b), 0);
+                $('h3 b').text(' ' + Number(sum).toFixed(2));
                 chart.update(0);
             });
         }, 1000);

@@ -46,7 +46,7 @@ var controller = {
                             var voteWeight = parseFloat(1 - (seconds/decaySeconds));
                             
                             //Zusammenzählen der einzelnen Votes in ein gesammeltes Array.
-                            voteArray[parseInt(vote.state) - 1] = voteArray[parseInt(vote.state) - 1] + voteWeight;
+                            voteArray[parseInt(vote.state) - 1] = Number(Number(voteArray[parseInt(vote.state) - 1]) + voteWeight).toFixed(2);
                         });
                         callback(voteArray);
                     }
