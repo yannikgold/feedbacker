@@ -1,10 +1,11 @@
 var MongoClient = require('mongodb').MongoClient;
 
 // Connection URL
-const url = 'mongodb://localhost:27017';
-
+//const url = 'mongodb://localhost:27017';
+const url = 'mongodb://emotionalaudit:MgmP8AqqnjtL315r22O6oGTneRm3IskffbfamGy9YUxM1Rqbbvqa5i7Naqv87a6Kgd4Z8fZuGG9z3OApmoPboQ%3D%3D@emotionalaudit.documents.azure.com:10255/?ssl=true'
 // Database Name
-const dbName = 'emotionalAudit';
+//const dbName = 'emotionalAudit';
+const dbName = 'emotionalaudit';
 
 var model = {
     findAll: function(collection, query, projection, callback){
