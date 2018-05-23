@@ -1,6 +1,6 @@
 var models = require('../models/mdl_generics');
 
-var decaySeconds = 180;
+var decaySeconds = 600;
 
 var controller = {
     addState: function(groupID, stateData, callback){
