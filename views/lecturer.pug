@@ -74,18 +74,48 @@ block content
             this.chart.destroy();
             this.chartType = (this.chartType == 'bar') ? 'pie' : 'bar';
 
-            this.chart = new Chart(ctx, {
-                type: chartType,
-                data: dataObject,
-                options: {
-                    scales: {
-                        yAxes: [{
-                            ticks: {
-                                beginAtZero: true,
-                                fontFamily: 'fontello'
+            if(this.chartType == 'bar'){
+                this.chart = new Chart(ctx, {
+                    type: chartType,
+                    data: dataObject,
+                    options: {
+                        scales: {
+                            yAxes: [{
+                                ticks: {
+                                    beginAtZero: true,
+                                    fontFamily: 'fontello'
+                                }
+                            }]
+                        },
+                        legend: {
+                            display: false
+                        },
+                        tooltips: {
+                            callbacks: {
+                                label: function(tooltipItem) {
+                                        return tooltipItem.yLabel;
+                                }
                             }
-                        }]
+                        }
                     }
-                }
-            });
+                });
+            } else if (this.chartType == 'pie'){
+                this.chart = new Chart(ctx, {
+                    type: chartType,
+                    data: dataObject,
+                    options: {
+                        scales: {
+                            yAxes: [{
+                                ticks: {
+                                    beginAtZero: true,
+                                    fontFamily: 'fontello'
+                                }
+                            }]
+                        },
+                        legend: {
+                            display: true
+                        }
+                    }
+                });
+            }
         }
