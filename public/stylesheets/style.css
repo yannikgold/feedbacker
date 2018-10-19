@@ -1,6 +1,14 @@
 
 body {
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  color: white;/*
+  background: aliceblue url('/img/background.jpg') no-repeat center center;
+  background-size: cover; */
+  background: aliceblue url('/img/background.jpg') no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
 }
 
 a {
@@ -34,10 +42,6 @@ a {
   cursor: pointer;
 }
 
-.selectedButton{
-  color: #5eb85b !important;
-  border: 2px solid #5eb85b !important;
-}
 
 .imageButton{
   background-color: white;
@@ -49,13 +53,32 @@ a {
   min-width: 380px;
   max-width: 500px;
   padding: 10px;
-  margin: 0 15px 15px 0;
+  margin-top: 10px;
+  border-radius: 10px;
+}
+
+.imageButton:hover {
+  background: #5eb85b;
+  color: white;
+  border: 2px solid white;
+}
+
+.selectedButton{
+  color: #5eb85b;
+  border: 2px solid #5eb85b;
+}
+
+.selectedButton:hover{
+  background: #5eb85b;
+  color: white;
+  border: 2px solid white;
 }
 
 .buttonImg{
   width: 50px;
   height: 50px;
   float: left;
+  border-radius: 10px;
 }
 
 .buttonDiv{
@@ -91,4 +114,137 @@ a {
   width: 100%;
   margin: auto;
   max-width: 1000px;
+}
+
+.input {
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.button {
+  height: 44px;
+  border: none;
+}
+
+#code {
+  width: 75%;
+  background: #FDFCFB;
+  font-family: inherit;
+  color: #737373;
+  letter-spacing: 1px;
+  text-indent: 5%;
+  border-radius: 5px 0 0 5px;
+}
+
+.enterGroup {
+  width: 25%;
+  height: 46px;
+  background: grey;
+  font-family: inherit;
+  font-weight: bold;
+  color: inherit;
+  letter-spacing: 1px;
+  border-radius: 0 5px 5px 0;
+  cursor: pointer;
+  transition: background .3s ease-in-out;
+}
+
+#codeform {
+  max-width: 450px;
+  margin: 0 auto;
+  background-color: rgba(0, 0, 0, 0.51);
+  padding: 3%;
+  border-radius: 15px;
+  margin-top: 2%;
+}
+
+.createGroup {
+  width: 100%;
+  margin-top: 10px;
+  border-radius: 5px;
+  color: white;
+}
+
+.createGroup:hover{
+  cursor: pointer;
+}
+
+#codeform h1, #codeform h5{
+  display: inline;
+}
+
+#codeform h5{
+  color: lightgrey;
+}
+
+.round-button {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  border: 2px solid #f5f5f5;
+  overflow: hidden;
+  background: #464646;
+  box-shadow: 0 0 3px gray;
+  display: block;
+  margin: 0 auto;
+}
+
+.round-button:hover {
+  background: #262626;
+  cursor: pointer;
+}
+
+.round-button img {
+  display: block;
+  width: 76%;
+  padding: 12%;
+  height: auto;
+}
+
+.dozent{
+  margin-top: 20px;
+}
+
+.round-button.chartToggle{
+  width: 75px;
+  height: 75px;
+  position: fixed;
+  top: 2%;
+  right: 2%;
+}
+
+.chartToggle img{
+  width: 60%;
+  padding: 20%;
+}
+
+header{
+  color: black;
+  text-align: center;
+}
+
+img.logo{
+  position: fixed;
+  bottom: 2%;
+  right: 2%;
+  width: 150px;
+  height: auto;
+}
+
+img.logoTop{
+  position: fixed;
+  top: 2%;
+  left: 2%;
+  width: 120px;
+  height: auto;
+}
+
+.top-bar {
+  background-color: aliceblue;
+  top: 0;
+  left: 0;
+  position: fixed;
+  width: 100%;
+  border-radius: 0 0 80px 80px;
 }

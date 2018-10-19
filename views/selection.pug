@@ -1,12 +1,14 @@
 extends layout
 
 block content
-  h1 Bist du Student oder Dozent?
-  button.student(type='button', class='selectionButton' style='background-color: #99cccc;') Student
-  button.dozent(type='button', class='selectionButton' style='background-color: #848484;') Dozent
+  #codeform
+    .round-button.student(type='button')
+      img(src='/img/graduate.svg' alt='Icon of a student')
+    .round-button.dozent(type='button')
+      img(src='/img/classroom.svg' alt='Icon of a classroom')
+  img.logo(src="/img/hs_logo.png", alt='Logo der Hochschule Flensburg')
 
   script.
-    //var code = #{code};
     $('.dozent').click(function(){
       window.location.href = window.location.pathname + '/lecturer';
     });

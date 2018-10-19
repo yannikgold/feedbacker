@@ -1,11 +1,16 @@
 extends layout
 
 block content
-    h1 Umfrageergebnisse
-    h3 Anzahl der Stimmen:
-        b  ...
-        button(type='button', onclick='toggleChart();', style='float: right;') Diagramm wechseln
-    canvas#auditResults
+    header
+        .top-bar
+            h1 Live-Feedback
+            h3 Aktuelle Stimmen:
+                b  ...
+        img.logoTop(src="/img/hs_logo.png", alt='Logo der Hochschule Flensburg')        
+        .round-button.chartToggle(type='button' onclick='toggleChart();')
+            img(src='/img/analytics.svg' alt='Icon of a pie- and bar-chart')
+    div(style='padding: 1% 2%; margin: 2% 5%; background-color: aliceblue; border-radius: 10px; margin-top: 150px;')
+        canvas#auditResults
     script.
         var ctx = document.getElementById("auditResults").getContext('2d');
 

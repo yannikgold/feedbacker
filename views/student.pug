@@ -1,8 +1,7 @@
 extends layout
 
 block content
-  h1 Wähle deinen Status:
-  .buttons
+  #codeform
     button(type='button', value='1', class='imageButton') 
       img(src="/img/yawning.png", alt="Kein Interesse", class="buttonImg")
       div(class="buttonDiv") Kein Interesse
@@ -26,6 +25,7 @@ block content
     button(type='button', value='0', class='imageButton') 
       //img(src="/img/like.png", alt="Keine Meinung", class="buttonImg")
       div(class="buttonDiv") Keine Meinung
+  img.logo(src="/img/hs_logo.png", alt='Logo der Hochschule Flensburg')
 
   script.
     new Fingerprint2().get(function(result, components) {
