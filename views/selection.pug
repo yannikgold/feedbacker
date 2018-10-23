@@ -2,11 +2,25 @@ extends layout
 
 block content
   #codeform
-    .round-button.student(type='button')
-      img(src='/img/graduate.svg' alt='Icon of a student')
-    .round-button.dozent(type='button')
-      img(src='/img/classroom.svg' alt='Icon of a classroom')
-  img.logo(src="/img/hs_logo.png", alt='Logo der Hochschule Flensburg')
+    table(style='table-layout: fixed; width:100%')
+      tbody
+        tr.student
+          td
+            .round-button.student(type='button')
+              img(src='/img/graduate.svg' alt='Icon of a student')
+          td(style='text-align: center;') 
+            h1 Student
+    .clear
+    table(style='table-layout: fixed; width:100%')
+      tbody
+        tr.dozent
+          td
+            .round-button.dozent(type='button')
+              img(src='/img/classroom.svg' alt='Icon of a classroom')  
+          td(style='text-align: center;') 
+            h1 Dozent
+    .clear
+  //img.logo(src="/img/hs_logo.png", alt='Logo der Hochschule Flensburg')
 
   script.
     $('.dozent').click(function(){

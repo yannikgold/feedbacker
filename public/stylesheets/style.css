@@ -2,9 +2,9 @@
 body {
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
   color: white;/*
-  background: aliceblue url('/img/background.jpg') no-repeat center center;
+  background: aliceblue url('/img/background_compressed.jpg') no-repeat center center;
   background-size: cover; */
-  background: aliceblue url('/img/background.jpg') no-repeat center center fixed; 
+  background: aliceblue url('/img/background_compressed.jpg') no-repeat center center fixed; 
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -50,7 +50,6 @@ a {
   font-size: 24px;
   cursor: pointer;
   width: 100%;
-  min-width: 380px;
   max-width: 500px;
   padding: 10px;
   margin-top: 10px;
@@ -164,6 +163,7 @@ a {
   margin-top: 10px;
   border-radius: 5px;
   color: white;
+  background-color: lightgrey;
 }
 
 .createGroup:hover{
@@ -179,8 +179,8 @@ a {
 }
 
 .round-button {
-  width: 200px;
-  height: 200px;
+  /*width: 200px;
+  height: 200px;*/
   border-radius: 50%;
   border: 2px solid #f5f5f5;
   overflow: hidden;
@@ -247,4 +247,8 @@ img.logoTop{
   position: fixed;
   width: 100%;
   border-radius: 0 0 80px 80px;
+}
+
+.student:hover, .dozent:hover{
+  cursor: pointer;
 }
