@@ -1,12 +1,16 @@
 var MongoClient = require('mongodb').MongoClient;
 
 // Connection URL
-const url = 'mongodb://localhost:27017';
+//const url = 'mongodb://localhost:27017';
 //const url = 'mongodb://emotionalaudit:MgmP8AqqnjtL315r22O6oGTneRm3IskffbfamGy9YUxM1Rqbbvqa5i7Naqv87a6Kgd4Z8fZuGG9z3OApmoPboQ%3D%3D@emotionalaudit.documents.azure.com:10255/?ssl=true'
+//Friedemann Azure connection string
+const url = 'mongodb://friedemann:IK2cBXFsxoPchIlXv97mkONImuPvXrDxawykJs3JksuBok8qgpZTSr4NDNBj1DWTNh9NoZqhI9avcCOL2q4Umg%3D%3D@friedemann.documents.azure.com:10255/?ssl=true';
 
 // Database Name
-const dbName = 'emotionalAudit';
+//const dbName = 'emotionalAudit';
 //const dbName = 'emotionalaudit';
+//Friedemann Azure CosmosDB
+const dbName = 'feedbacker';
 
 var model = {
     findAll: function(collection, query, projection, callback){
