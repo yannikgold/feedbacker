@@ -6,15 +6,17 @@
     "start": "node ./bin/www"
   },
   "dependencies": {
-    "bower": "^1.8.4",
-    "cookie-parser": "~1.4.3",
+    "bower": "^1.8.8",
+    "cookie-parser": "^1.4.4",
     "debug": "~2.6.9",
-    "express": "~4.16.0",
-    "fingerprintjs2": "^1.6.1",
+    "express": "^4.16.4",
+    "fingerprintjs2": "^1.8.6",
     "http-errors": "~1.6.2",
-    "mongodb": "^3.0.5",
-    "morgan": "~1.9.0",
+    "lodash": "^4.17.11",
+    "mime": "^2.4.1",
+    "mongodb": "^3.2.3",
+    "morgan": "^1.9.1",
     "pug": "2.0.0-beta11",
-    "socket.io": "^2.1.1"
+    "socket.io": "^2.2.0"
   }
 }
