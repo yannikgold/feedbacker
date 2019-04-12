@@ -1,3 +1,5 @@
+Paper und Poster finden sich unter https://dl.gi.de/handle/20.500.12116/16651.
+
 Herzlich Willkommen zum Quellcode unseres Prototypen für das HCI-Fach im SS2018 aus dem AI-Master. Um die Webapplikation zum laufen zu bekommen, müssen sowohl Node.js und MongoDB eingerichtet sein.
 
 Voraussetzungen
